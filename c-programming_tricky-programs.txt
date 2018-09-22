@@ -867,3 +867,61 @@ float power(float a,int b)
   else
   return ((1/a)*power(a,b+1));
 }
+
+//WAP to find the julian date
+
+#include<stdio.h>
+main()
+{
+ int dd,mm,yy,julian,valid=0;
+ clrscr();
+ while(1)
+ {
+  printf("Enter date as dd/mm/yy: ");
+  scanf("%d/%d/%d",&dd,&mm,&yy);
+  if(yy!=0)
+  {
+   if(mm>=1&&mm<=12)
+   {
+     int mdays;
+     if(mm==2)
+      mdays=(yy%4==0&&yy%100!=0||yy%400==0)?29:28;
+      else
+      if(mm==4||mm==6||mm==9||mm==11)
+      mdays=30;
+      else
+      mdays=31;
+      if(dd>=1&&dd<=mdays)
+      valid=1;
+   }
+  }
+  if(valid==1)
+  {
+    printf("valid date");
+    break;
+  }
+  else
+    printf("Date invalid");
+ }
+    julian=dd;
+    mm=mm-1;
+    switch(mm)
+    {
+     case 11:julian=julian+30;
+     case 10:julian=julian+31;
+     case 9:julian=julian+30;
+     case 8:julian=julian+31;
+     case 7:julian=julian+31;
+     case 6:julian=julian+30;
+     case 5:julian=julian+31;
+     case 4:julian=julian+30;
+     case 3:julian=julian+31;
+     case 2:if(yy%4==0)
+	    julian=julian+29;
+	    else
+	    julian=julian+28;
+     case 1:julian=julian+31;
+    }
+ printf("\n julian date is %d",julian);
+ getch();
+}
