@@ -838,3 +838,32 @@ Enter a string
 mam
 length = 3
 Given value is a palinfrom
+
+//WAP to find the x to the power of n program
+
+#include<stdio.h>
+main()
+{
+ float x,result;
+ int n;
+ float power(float,int);
+ clrscr();
+ printf("base value \n");
+ scanf("%4f",&x);
+ printf("exponent value \n");
+ scanf("%4f",&n);
+ result=power(x,n);
+ printf("\n %4f is the power of %d: %4f",x,n,result);
+ getch();
+}
+
+float power(float a,int b)
+{
+  if(b==0)
+  return (1);
+  else
+  if(b>0)
+  return (a*power(a,b-1));
+  else
+  return ((1/a)*power(a,b+1));
+}
