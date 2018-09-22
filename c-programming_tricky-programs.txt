@@ -805,3 +805,36 @@ Transpose of A
 1 4
 2 5
 3 6
+
+//WAP to given value is palindrom or not
+
+#include<stdio.h>
+main()
+{
+ char str[20];
+ int i,l;
+ clrscr();
+ printf("Enter a string \n");
+ gets(str);
+ l=strlen(str);
+ printf("length = %d \n",l);
+ for(i=0;i<l/2;i++)
+ {
+   if(str[i]!=str[l-1-i])
+   {
+    printf("Given value is not a palindrom");
+    break;
+   }
+ }
+ if(i==l/2)
+ {
+   printf("Given value is a palinfrom");
+ }
+ getch();
+}
+
+output:
+Enter a string
+mam
+length = 3
+Given value is a palinfrom
