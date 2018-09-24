@@ -376,6 +376,7 @@ int main()
 
 //Reverse an Integer
 
+//1 way
 #include <stdio.h>
 int main()
 {
@@ -394,6 +395,23 @@ int main()
     printf("Reversed Number = %d", reversedNumber);
 
     return 0;
+}
+
+//2nd way 
+#include<stdio.h>
+void main()
+{
+  int n,r=0,rem;
+  printf("enter the value");
+  scanf("%d",&n);
+  while(n!=0)
+  {
+     rem=n%10;
+     r=r*10+rem;
+     n=n/10;
+  }
+  printf("Reversed number = %d",r);
+  getch();
 }
 
 //Program to Check Prime Number
