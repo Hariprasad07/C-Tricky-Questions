@@ -489,6 +489,8 @@ int main()
 }
 
 //write a C program to solve quadratic equation
+1st way:
+--------
 #include<stdio.h>
 #include<math.h>
  
@@ -534,7 +536,33 @@ int main(){
  
   return 0;
 }
- 
+
+2nd way:
+-------
+#include<stdio.h>
+#include<conio.h>
+#include<math.h>
+void main()
+{
+ int a,b,c;
+ float d,x,y;
+ clrscr();
+ printf("enter the co-efficient of x and const term c");
+ scanf("%d%d%d",&a,&b,&c);
+ d=b*b-4*a*c;
+ if(d<0)
+ printf("root are imaginary");
+ if(d=0)
+ {
+  x=-b/(2*a);
+  printf("roots are real & distinct");
+  x=(-b+sqrt(d))/(2*a);
+  y=(-b-sqrt(d))/(2*a);
+  printf("%f%f",x,y);
+ }
+ getch();
+
+
 /*
  
 OUTPUT:
