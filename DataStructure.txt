@@ -1,3 +1,5 @@
+//file functions
+
 #include<stdio.h>
 void main()
 {
