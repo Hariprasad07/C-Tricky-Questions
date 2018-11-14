@@ -22,3 +22,33 @@ void main()
    }
    fclose(fp);
 }
+//other ways
+#include<stdio.h>
+#include<stdlib.h>
+#include<conio.h>
+main()
+{
+
+  clrscr();
+  FILE *fp;
+  fp=fopen("test.txt","w");
+  fprintf(fp,"hello");
+  if(fp==NULL)
+  {
+    printf("file not found");
+  }
+  //exit(1);
+  fclose(fp);
+  //read
+  fp=fopen("test.txt","r");
+  if(fp==NULL)
+  {
+    printf("file not found");
+    exit(1);
+  }
+  char ch;
+  fscanf(fp,"%d",&ch);
+  printf("%d",ch);
+  fclose(fp);
+  getch();
+}
