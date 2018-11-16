@@ -25,12 +25,13 @@ void main()
 //other ways
 #include<stdio.h>
 #include<stdlib.h>
-#include<conio.h>
-main()
+void main()
 {
-
-  clrscr();
   FILE *fp;
+  char ch;
+  clrscr();
+
+  //write
   fp=fopen("test.txt","w");
   fprintf(fp,"hello");
   if(fp==NULL)
@@ -39,16 +40,11 @@ main()
   }
   //exit(1);
   fclose(fp);
+
   //read
   fp=fopen("test.txt","r");
-  if(fp==NULL)
-  {
-    printf("file not found");
-    exit(1);
-  }
-  char ch;
-  fscanf(fp,"%d",&ch);
-  printf("%d",ch);
+  fscanf(fp,"%s",&ch);
+  printf("%s",&ch);
   fclose(fp);
   getch();
 }
