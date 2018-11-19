@@ -5,23 +5,38 @@ void main()
    FILE *fp;
    char ch;
    clrscr();
+
    //writing data into file
-   fp =fopen("test.txt","w");
+   fp=fopen("test.txt","w");
    while((ch=getchar())!=EOF)
    {
-     fputc(ch,fp);
-     printf("%c",ch);
+      //printf("write");
+      putc(ch,fp);
+      //printf("%c",ch);
    }
    fclose(fp);
+
    //reading data into file
-   fp =fopen("test.txt","r");
-   while((ch=getchar())!=EOF)
-   {
-     fputc(ch,fp);
-     printf("%c",ch);
-   }
+   fp=fopen("C://TURBOC3//BIN//TEST.TXT","r");
+   /*while((ch=getc(fp))!=EOF)
+     {
+       fscanf(fp,"%s",&ch);
+       printf("%s",&ch);
+     }*/
+    /*while(fscanf(fp,"%s",&ch)!=EOF)
+     {
+
+       printf("%s",&ch);
+     }*/
+   while((ch=getc(fp))!=EOF)
+     {
+       putc(ch,fp);
+       printf("%c",ch);
+     }
    fclose(fp);
+   getch();
 }
+
 //other ways
 #include<stdio.h>
 #include<stdlib.h>
