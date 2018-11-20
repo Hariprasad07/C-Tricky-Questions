@@ -63,3 +63,42 @@ void main()
   fclose(fp);
   getch();
 }
+//to enter n values
+#include<stdio.h>
+void main()
+{
+   FILE *fp;
+   char name[20];
+   char comb[10];
+   int regNo,i,n;
+   clrscr();
+
+   //writing data into file
+   printf("Enter the values\n");
+   scanf("%d",&n);
+   fp=fopen("test.txt","w");
+
+   for(i=0;i<=n;i++)
+   {
+      printf("Enter the student details\n");
+      scanf("%s %d %s",name,&regNo,comb);
+      fprintf(fp,"%s %d %s",name,regNo,comb);
+   }
+   fclose(fp);
+
+   //reading data into file
+   fp=fopen("C:\\TURBOC3\\BIN\\TEST.TXT","r");
+   printf("reading the file\n");
+   /*for(i=0;i<=n;i++)
+   {
+     fscanf(fp,"%s %d %s",name,&regNo,comb);
+     printf("name=%s Reg=%d comb=%s\n",name,regNo,comb);
+   }*/
+   while(fscanf(fp,"%s %d %s",name,&regNo,comb)!=EOF)
+   {
+      printf("name=%s Reg=%d comb=%s\n",name,regNo,comb);
+   }
+   fclose(fp);
+   getch();
+
+}
