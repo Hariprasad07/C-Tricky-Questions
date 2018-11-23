@@ -162,3 +162,34 @@ while((num=getw(fp1))!=EOF)
   fclose(fp3);
   getch();
 }
+
+//file function using structure and pwrite fuction
+#include<stdio.h>
+struct employee
+{
+  int empId;
+  char name[30];
+  float sal;
+}emp;
+
+void main()
+{
+  FILE *fp;
+  char ch;
+  clrscr();
+  fp=fopen("bin.dat","wb");
+  printf("Do you want to enter employee details y/n \n");
+  ch=getchar();
+
+  while((ch=='Y')||(ch=='y'))
+  {
+    printf("Enter employee details\n");
+    scanf("%d %s %f",&emp.empId,emp.name,&emp.sal);
+    fwrite(&emp,sizeof(emp),1,fp);
+    printf("Do you want to enter again");
+    ch=getchar();
+  }
+  fclose(fp);
+  getch();
+}
+
