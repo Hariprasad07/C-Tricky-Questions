@@ -122,3 +122,43 @@ int main()
       return 0;
 }
 
+//file function using even and odd
+#include<stdio.h>
+void main()
+{
+FILE *fp1,*fp2,*fp3;
+int num=0;
+clrscr();
+printf("Enter the numeric content");
+fp1=fopen("data.txt","w");
+while(num!=-1)
+{
+  scanf("%d",&num);
+  putw(num,fp1);
+}
+fclose(fp1);
+fp1=fopen("C:\TURBOC3\BIN\NUM.TXT","r");
+//fp1=fopen("data.txt","r");
+fp2=fopen("even.txt","w");
+fp3=fopen("odd.txt","w");
+while((num=getw(fp1))!=EOF)
+{
+  if(num%2==0)
+   putw(num,fp2);
+  else
+   putw(num,fp3);
+}
+  printf("The even number are:\n");
+  fp2=fopen("even.txt","r");
+  //fp2=fopen("even.txt","r");
+  while((num=getw(fp2))!=EOF)
+   printf("%d",num);
+  fclose(fp2);
+  printf("The odd number are:\n");
+  fp3=fopen("C:\TURBOC3\BIN\ODD.TXT","r");
+  //fp3=fopen("odd.txt","r");
+  while((num=getw(fp3))!=EOF)
+   printf("%d",num);
+  fclose(fp3);
+  getch();
+}
