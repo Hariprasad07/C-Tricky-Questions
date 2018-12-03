@@ -193,3 +193,164 @@ void main()
   getch();
 }
 
+//Data Structure
+//stack
+#include<stdio.h>
+#define size 10
+
+void push();
+void pop();
+void display();
+
+int top=-1;
+int stack[size];
+
+void main()
+{
+ int ch;
+ while(1)
+ {
+   printf("1.push\n");
+   printf("2.pop\n");
+   printf("3.display\n");
+   printf("4.exit\n");
+   printf("enter your choice\n");
+   scanf("%d",&ch);
+
+   switch(ch)
+   {
+     case 1:push();
+	    break;
+     case 2:pop();
+	    break;
+     case 3:display();
+	    break;
+     case 4:exit(1);
+     default:printf("invalid choice\n");
+   }
+ }
+}
+
+void push()
+{
+ int i;
+ if(top==(size-1))
+ printf("\nstack overflow");
+ else
+ {
+   printf("\nentered item should be pushed");
+   scanf("%d",&i);
+   top=top+1;
+   stack[top]=i;
+ }
+}
+void pop()
+{
+  if(top==-1)
+  printf("stack underflow");
+  else
+  {
+    printf("\npopped element is: %d",stack[top]);
+    top=top-1;
+  }
+}
+void display()
+{
+  int i;
+  if(top==-1)
+  printf("\nstack is empty\n");
+  else
+  {
+    printf("\nstack element");
+    for(i=top;i>=0;i--)
+    printf("%d",stack[i]);
+  }
+}
+
+//Queue
+#include<stdio.h>
+#define size 10
+
+void insert();
+void del();
+void display();
+
+int Q[size];
+int front,rear;
+
+void main()
+{
+ int ch;
+ clrscr();
+ while(1)
+ {
+   printf("1.enqueue(insert)\n");
+   printf("2.dequeue(delete)\n");
+   printf("3.display\n");
+   printf("4.exit\n");
+   printf("enter your choice\n");
+   scanf("%d",&ch);
+
+   switch(ch)
+   {
+     case 1:insert();
+	    break;
+     case 2:del();
+	    break;
+     case 3:display();
+	    break;
+     case 4:exit(0);
+     default:printf("invalid choice\n");
+   }
+ }
+}
+
+void insert()
+{
+  int data;
+  if(rear==size)
+  {
+    printf("\n linear queue is full");
+    return;
+  }
+  else
+  {
+    printf("\n enter data: \n");
+    scanf("%d",&data);
+    Q[rear]=data;
+    rear++;
+    printf("\n data inserted in the queue\n");
+  }
+}
+void del()
+{
+ if(rear==front)
+ {
+   printf("\n queue is empty..\n");
+   return;
+ }
+ else
+ {
+   printf("\n deleted element is: %d",Q[front]);
+   front++;
+ }
+}
+
+void display()
+{
+  int i;
+  if(front==rear)
+  {
+    printf("Queue is empty");
+    return;
+  }
+  else
+  {
+    printf("\n element in queue are: \n");
+    for(i=front;i<rear;i++)
+    {
+       printf("%d",Q[i]);
+    }
+  }
+}
+
