@@ -444,9 +444,9 @@ void display()
 }
 
 ----------------------------------
-//Binary tree Traversal
+//Binary search tree Traversal
 #include<stdio.h>
-#include<stdlib.h>
+
 struct node
 {
  struct node *left;
@@ -454,8 +454,8 @@ struct node
  struct node *right;
 };
 typedef struct node Node;
-//Node *root;
-//root=NULL;
+Node *root=NULL;
+
 
 create_bt(Node *ptr)
 {
@@ -465,10 +465,10 @@ create_bt(Node *ptr)
 
   if(ptr!=NULL)
   {
-    printf("Enter an item");
+    printf("Enter an item \n");
     scanf("%d",&item);
     ptr->info=item;
-    printf("Do you want to create a left child[y/n]:");
+    printf("Do you want to create a left child[y/n]: %d",ptr->info);
     ch=getche();
     if(ch=='Y'||ch=='y')
     {
@@ -491,11 +491,11 @@ create_bt(Node *ptr)
     }
     else
     {
-     ptr->right = NULL;
+      ptr->right = NULL;
       create_bt(NULL);
     }
   }
-  return;
+  //return;
 }
 
 void display(Node *ptr,int level)
@@ -544,35 +544,35 @@ void postorder(Node *ptr)
 void main()
 {
   int ch,item;
-  Node *root;
-  root=NULL;
+  Node *root=NULL;
+  clrscr();
 
   while(1)
   {
-    printf("\n Binary Tree Traversal");
-    printf("1.Create");
-    printf("2.Display");
-    printf("3.Pre-Order");
-    printf("4.In-Order");
-    printf("5.PostOrder");
-    printf("6.Exit");
-    printf("\n Enter your choice");
+    printf("\n Binary Tree Traversal \n");
+    printf("1.Create \n");
+    printf("2.Display \n");
+    printf("3.Pre-Order \n");
+    printf("4.In-Order \n");
+    printf("5.PostOrder \n");
+    printf("6.Exit \n");
+    printf("\n Enter your choice: ");
     scanf("%d",&ch);
 
   switch(ch)
   {
    case 1:root=(Node *)malloc(sizeof(Node));
 	  break;
-   case 2:printf("Binary Tree");
+   case 2:printf("\nBinary Tree \n");
 	  display(root,1);
 	  break;
-   case 3:printf("Pre-Order");
+   case 3:printf("Pre-Order \n");
 	  preorder(root);
 	  break;
-   case 4:printf("Inorder");
+   case 4:printf("Inorder \n");
 	  inorder(root);
 	  break;
-   case 5:printf("postorder");
+   case 5:printf("postorder \n");
 	  postorder(root);
 	  break;
    case 6:exit(0);
