@@ -446,6 +446,7 @@ void display()
 ----------------------------------
 //Binary search tree Traversal
 #include<stdio.h>
+#include<stdlib.h>
 
 struct node
 {
@@ -456,8 +457,7 @@ struct node
 typedef struct node Node;
 Node *root=NULL;
 
-
-create_bt(Node *ptr)
+void create_bt(Node *ptr)
 {
   Node *newright, *newleft;
   char ch;
@@ -465,10 +465,10 @@ create_bt(Node *ptr)
 
   if(ptr!=NULL)
   {
-    printf("Enter an item \n");
-    scanf("%d",&item);
+    printf("Enter an item ");
+    scanf("%d \n",&item);
     ptr->info=item;
-    printf("Do you want to create a left child[y/n]: %d",ptr->info);
+    printf("Do you want to create a left child[y/n]: %d \n",ptr->info);
     ch=getche();
     if(ch=='Y'||ch=='y')
     {
@@ -481,7 +481,7 @@ create_bt(Node *ptr)
       ptr->left = NULL;
       create_bt(NULL);
     }
-    printf("Do you want to create a right child(y/n)");
+    printf("\n Do you want to create a right child(y/n)");
     ch=getche();
     if(ch=='Y'||ch=='y')
     {
@@ -495,8 +495,7 @@ create_bt(Node *ptr)
       create_bt(NULL);
     }
   }
-  //return;
-}
+ }
 
 void display(Node *ptr,int level)
 {
@@ -550,21 +549,21 @@ void main()
   while(1)
   {
     printf("\n Binary Tree Traversal \n");
-    printf("1.Create \n");
-    printf("2.Display \n");
-    printf("3.Pre-Order \n");
-    printf("4.In-Order \n");
-    printf("5.PostOrder \n");
-    printf("6.Exit \n");
-    printf("\n Enter your choice: ");
+    printf("\n 1.Create \n");
+    printf("\n 2.Display \n");
+    printf("\n 3.Pre-Order \n");
+    printf("\n 4.In-Order \n");
+    printf("\n 5.PostOrder \n");
+    printf("\n 6.Exit \n");
+    printf("Enter your choice: ");
     scanf("%d",&ch);
 
   switch(ch)
   {
    case 1:root=(Node *)malloc(sizeof(Node));
-          create_bt(root);
+	  create_bt(root);
 	  break;
-   case 2:printf("\nBinary Tree \n");
+   case 2:printf("\n Binary Tree \n");
 	  display(root,1);
 	  break;
    case 3:printf("Pre-Order \n");
