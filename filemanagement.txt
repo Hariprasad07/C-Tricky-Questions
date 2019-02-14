@@ -1,0 +1,104 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <dirent.h>
+
+void createfile() {
+ Define variables and pointer
+ int test_num;
+ FILE *test_ptr;
+ test_ptr = fopen("C:\test.txt","w");
+ if(test_ptr == NULL){
+  printf("Error!");
+  exit(1);
+ }
+ printf("Enter test_num: ");
+ scanf("%d",&test_num);
+ fprintf(test_ptr,"%d",test_num);
+ fclose(test_ptr);
+ return 0;
+}
+
+void ls(void){
+ struct dirent *ptr_dir; 
+ DIR *dr = opendir(".");
+ if (dr == NULL){
+  printf("Could not open current directory");
+  return 0;
+}
+ while ((ptr_dir = readdir(dr)) != NULL)
+   printf("%s \n", ptr_dir->d_name);
+ closedir(dr);
+ return 0;
+}
+
+void readfile(){
+ char ch, filename[50];
+ FILE *my_fp;
+ printf("Enter the name of file you wish to see \n");
+ gets(filename);
+ scanf("%d",filename);
+ my_fp = fopen(filename,"r");
+ if( my_fp == NULL ){
+  perror("Error while opening the file:\n" );
+  exit(EXIT_FAILURE);
+ }
+ printf("The contents of %s file are : \n", filename);
+ while( ( ch = fgetc(my_fp) ) != EOF )
+  printf("%c",ch);
+ fclose(my_fp);
+ return 0;
+}
+
+void appendfile(){
+ char ch, filename[50];
+ FILE *my_fp;
+ printf("Enter the name of file you wish to add text to \n");
+ gets(filename);
+ scanf("%d",filename);
+ my_fp = fopen(filename,"a");
+ fputs(" Adding to the file", my_fp);
+ fclose(my_fp);
+}
+
+int main(){
+ int input;
+ printf( "1. Create file \n" );
+ printf( "2. Open file \n" );
+ printf( "3. List current directory content \n" );
+ printf( "4. Write to file \n" );
+ printf( "5. Rename a file \n" );
+ printf( "6. Delete file \n" );
+ printf( "7. Print file \n" );
+ printf( "0. Quit application \n" );
+ printf( "Selection: " );
+ scanf( "%d", &input );
+ switch ( input ) {
+  case 1:
+   createfile();
+   break;
+  case 2:
+   readfile();
+   break;
+  case 3:
+   ls();
+   break;
+  case 4:
+   appendfile();
+   break;
+  case 5:
+   printf( "File Renamed! \n" );
+   break;
+  case 6:
+   printf( "File Deleted! \n" );
+   break;
+  case 7:
+   printf( "File Printed! \n");
+   break;
+  case 0:
+   printf( "Quitting application..! \n");
+   break;
+  default:
+   printf( "Bad input, quitting! \n");
+ }
+ getchar();
+}
