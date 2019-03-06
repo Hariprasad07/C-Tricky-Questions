@@ -828,6 +828,205 @@ void main()
 }
 
 ----------------------------------
+//Deletion of Linked List
+----------------------------------
+#include<stdio.h>
+
+struct node
+{
+  int info;
+  struct node *link;
+};
+typedef struct node Node;
+Node *start=NULL;
+
+void create()
+{
+  char ch;
+  int i=0;
+
+  Node *currptr,*newnode;
+  currptr=(Node *)malloc(sizeof(Node));
+  start=currptr;
+  while(1)
+  {
+    printf("\n Enter the node %d",i+1);
+    scanf("%d",&currptr->info);
+    printf("Do you wish to add one more node[y/n]: \n");
+    ch=getche();
+    if((ch=='y')||(ch=='Y'))
+    {
+       newnode=(Node *)malloc(sizeof(Node));
+       currptr->link=newnode;
+       currptr=newnode;
+    }
+    else
+    {
+      currptr->link=NULL;
+      break;
+    }
+  }
+}
+
+void display()
+{
+  Node *currptr=start;
+  if(start==NULL)
+  {
+    printf("The list is empty");
+  }
+  else
+  {
+    while(currptr!=NULL)
+    {
+      printf("%d",currptr->info);
+      printf("->");
+      currptr=currptr->link;
+    }
+    printf("NULL");
+  }
+}
+
+int length()
+{
+  int len=0;
+  Node *currptr;
+
+  if(start==NULL)
+  {
+    printf("The list is empty");
+    return(len);
+  }
+  currptr=start;
+  while(currptr!=NULL)
+  {
+     len++;
+     currptr=currptr->link;
+  }
+  return(len);
+}
+
+void del_beg()
+{
+  Node *currptr;
+  if(start==NULL)
+  {
+    printf("\n Linked list is empty \n");
+    return;
+  }
+  else
+  {
+    currptr=start;
+    start=start->link;
+    free(currptr);
+  }
+}
+
+void del_end()
+{
+   Node *currptr,*prevptr;
+   if(start==NULL)
+   {
+     printf("\n Linked list is empty \n");
+     return;
+   }
+   else
+   if(start->link==NULL)
+   {
+       start=NULL;
+       return;
+   }
+   else
+   {
+     currptr=start;
+     prevptr=NULL;
+     while(currptr->link!=NULL)
+     {
+       prevptr=currptr;
+       currptr=currptr->link;
+     }
+     prevptr->link=NULL;
+     free(currptr);
+   }
+}
+
+void del_pos(int pos)
+{
+   int i;
+   Node *currptr,*prevptr;
+   if(pos==1)
+   del_beg();
+   else
+   {
+     currptr=start;
+     prevptr=NULL;
+     for(i=1;i<pos;i++)
+     {
+       prevptr=currptr;
+       currptr=currptr->link;
+     }
+     prevptr->link=currptr->link;
+     free(currptr);
+   }
+}
+
+void main()
+{
+  int ch,item,pos;
+  clrscr();
+  while(1)
+  {
+    printf("\n 1.create");
+    printf("\n 2.Display");
+    printf("\n 3.Delete in Begining");
+    printf("\n 4.Delete at end");
+    printf("\n 5.Delete at specified position");
+    printf("\n 6.exit");
+    printf("\n Enter the choice");
+    scanf("%d",&ch);
+    switch(ch)
+    {
+      case 1:  start=NULL;
+	       create();
+	       break;
+      case 2:  display();
+	       break;
+      case 3:  printf("\n the linked list before deletion: ");
+	       display();
+	       del_beg();
+	       printf("\n the linked list after deletion is: ");
+	       display();
+	       break;
+      case 4:  printf("\n the linked list before deletion at end: ");
+	       display();
+	       del_end();
+	       printf("\n the linked list after deletion at end: ");
+	       display();
+	       break;
+      case 5:  printf("\n Enter valid position");
+	       scanf("%d",&pos);
+	       if((pos==0)||(pos>length()+1))
+	       {
+		printf("\n Invalid position");
+		break;
+	       }
+	       else
+	       {
+		 printf("\n the linked list before deletion");
+		 display();
+		 del_pos(pos);
+		 printf("\n the linked list after deletion is:");
+		 display();
+		 break;
+	       }
+      case 6:  exit(0);
+      default: printf("wrong choice");
+    }
+  }
+}
+
+
+----------------------------------
 //Binary search tree Traversal
 #include<stdio.h>
 #include<stdlib.h>
