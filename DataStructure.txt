@@ -827,9 +827,122 @@ void main()
   }
 }
 
-----------------------------------
-//Deletion of Linked List
-----------------------------------
+-----------------------------------------
+//Deletion of Linked List by Megha Mam
+-----------------------------------------
+------------------------
+1. Deletion at beginning
+------------------------
+#include<stdio.h>
+
+struct node
+{
+  struct node *link;
+  int info;
+};
+typedef struct node Node;
+Node *start=NULL;
+
+void create()
+{
+  char ch;
+  int i=0;
+
+  Node *currptr,*newnode;
+  currptr=(Node *)malloc(sizeof(Node));
+  start=currptr;
+  while(1)
+  {
+    printf("\n Enter the node %d",i+1);
+    scanf("%d",&currptr->info);
+    printf("Do you wish to add one more node[y/n]: \n");
+    ch=getche();
+    if((ch=='y')||(ch=='Y'))
+    {
+       newnode=(Node *)malloc(sizeof(Node));
+       currptr->link=newnode;
+       currptr=newnode;
+    }
+    else
+    {
+      currptr->link=NULL;
+      break;
+    }
+  }
+}
+
+void display()
+{
+  Node *currptr=start;
+  if(start==NULL)
+  {
+    printf("The list is empty");
+  }
+  else
+  {
+    while(currptr!=NULL)
+    {
+      printf("%d",currptr->info);
+      printf("->");
+      currptr=currptr->link;
+    }
+    printf("NULL");
+  }
+}
+
+void del_beg()
+{
+  Node *currptr;
+  if(start==NULL)
+  {
+    printf("\n Linked list is empty \n");
+    return;
+  }
+  else
+  {
+    currptr=start;
+    start=start->link;
+    free(currptr);
+  }
+}
+
+void main()
+{
+  int ch,item,pos;
+  clrscr();
+  while(1)
+  {
+    printf("\n 1.create");
+    printf("\n 2.Display");
+    printf("\n 3.Delete in Begining");
+    printf("\n 4.exit");
+    printf("\n Enter the choice");
+    scanf("%d",&ch);
+    switch(ch)
+    {
+      case 1:  start=NULL;
+	          create();
+	          break;
+      case 2:  display();
+	          break;
+      case 3:  printf("\n the linked list before deletion: ");
+	          display();
+	          del_beg();
+	          printf("\n the linked list after deletion is: ");
+	          display();
+	          break;
+      case 4:  exit(0);
+      default: printf("wrong choice");
+    }
+  }
+}
+
+
+
+
+-----------------------------------------
+//Deletion of Linked List by Hari Prasad
+-----------------------------------------
 #include<stdio.h>
 
 struct node
