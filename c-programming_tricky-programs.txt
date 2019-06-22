@@ -991,3 +991,42 @@ output:
 12
 123
 1234
+
+//WAP for Tower of Hanoi
+/*
+  Rules for the Tower of Hanoi
+  1) only one disk can be moved at a time.
+  2) No larger disk can appears on smaller disk
+  3) only one top most disk can be moved from one tower and
+     it can appear only at the top most postion of another tower.
+  4) Have to transfer all disk to the right hand tower in the
+     fewest possible.
+
+*/
+
+#include<stdio.h>
+
+void toh(int,char,char,char);
+
+main()
+{
+  int num;
+  clrscr();
+  printf("Enter the number of disk:");
+  scanf("%d",&num);
+  printf("the sequence of the move involved in the Tower of Hanoi are: \n");
+  toh(num, 'A','B','C');
+  getch();
+}
+
+void toh(int num, char from, char to, char aux)
+{
+    if(num==1)
+    {
+      printf("\n move disk 1 from %c to %c",from,to);
+      return;
+    }
+    toh(num - 1,from,aux,to);
+    printf("\n move disk %d from %c to %c", num, from, to);
+    toh(num - 1,aux, to, from);
+}
